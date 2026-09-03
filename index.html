@@ -1,0 +1,2846 @@
+<!doctype html>
+<!doctype html>
+
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>KKN Desa Wonosari — Digital Memory Book</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;1,500;1,600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #1e3a5f;
+        --green: #3e8e5a;
+        --cream: #fff8f1;
+        --sky: #d9f3ff;
+        --gray: #6b7280;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: "DM Sans", sans-serif;
+        color: var(--navy);
+        overflow-x: hidden;
+      }
+      .display-serif {
+        font-family: "Playfair Display", serif;
+      }
+      .chapter {
+        position: relative;
+        padding: 5.5rem 1.25rem;
+        overflow: hidden;
+      }
+      .chapter-inner {
+        max-width: 1120px;
+        margin: auto;
+      }
+      .eyebrow {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--green);
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+      }
+      .eyebrow:before {
+        content: "";
+        width: 28px;
+        height: 2px;
+        background: currentColor;
+      }
+      .section-title {
+        font-family: "DM Sans", sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.045em;
+        line-height: 1.04;
+        margin: 0.85rem 0 1rem;
+        font-size: clamp(2.25rem, 7vw, 4.5rem);
+      }
+      .section-quote {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: clamp(1.05rem, 2vw, 1.35rem);
+        line-height: 1.6;
+        color: #54708d;
+        max-width: 680px;
+      }
+      .photo {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        background: #d9f3ff;
+      }
+      .paper-card {
+        background: #fff;
+        border: 1px solid rgba(30, 58, 95, 0.08);
+        box-shadow: 0 18px 42px rgba(30, 58, 95, 0.09);
+        border-radius: 24px;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(26px);
+        transition:
+          opacity 0.75s ease,
+          transform 0.75s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .leaf {
+        position: absolute;
+        border-radius: 999px;
+        background: rgba(62, 142, 90, 0.1);
+        filter: blur(0.1px);
+        pointer-events: none;
+      }
+      .hero {
+        min-height: calc(100 * min(var(--vh, 1vh), 1vh));
+        position: relative;
+        display: flex;
+        align-items: end;
+        padding: 1.25rem;
+        isolation: isolate;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+      }
+      .hero-bg:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(14, 38, 55, 0.22),
+          rgba(14, 38, 55, 0.1) 36%,
+          rgba(10, 35, 45, 0.82)
+        );
+      }
+      .hero-copy {
+        width: 100%;
+        max-width: 1120px;
+        margin: auto;
+        color: #fff;
+        padding: 4rem 0 2rem;
+      }
+      .hero-title {
+        font-size: clamp(3.8rem, 14vw, 8rem);
+        line-height: 0.88;
+        letter-spacing: -0.075em;
+        font-weight: 700;
+        margin: 1rem 0;
+      }
+      .logo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        background: #fff;
+      }
+      .hero-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        border: 0;
+        border-radius: 999px;
+        padding: 0.95rem 1.25rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      }
+      .hero-button:hover {
+        transform: translateY(-2px);
+      }
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+      .info-card {
+        padding: 1.1rem;
+        border-radius: 18px;
+        background: #fff;
+      }
+      .info-card:last-child {
+        grid-column: span 2;
+      }
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      .feature-card {
+        border-radius: 22px;
+        overflow: hidden;
+        min-height: 230px;
+        position: relative;
+        color: white;
+      }
+      .feature-card:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(transparent 30%, rgba(13, 39, 44, 0.83));
+      }
+      .feature-card div {
+        position: absolute;
+        z-index: 1;
+        inset: auto 1rem 1rem;
+      }
+      .activity-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      .activity-card {
+        overflow: hidden;
+      }
+      .activity-card img {
+        height: 145px;
+      }
+      .activity-content {
+        padding: 1rem;
+      }
+      .activity-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        margin-top: -2rem;
+        position: relative;
+        z-index: 2;
+        background: var(--sky);
+        color: var(--green);
+        font-size: 1rem;
+      }
+      .timeline {
+        border-left: 2px solid rgba(62, 142, 90, 0.28);
+        margin: 2.5rem 0 0 0.75rem;
+        padding-left: 1.5rem;
+      }
+      .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+      }
+      .timeline-item:before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--green);
+        left: -1.98rem;
+        top: 1rem;
+        border: 3px solid var(--cream);
+      }
+      .timeline-card {
+        overflow: hidden;
+      }
+      .timeline-card img {
+        height: 200px;
+      }
+      .timeline-copy {
+        padding: 1rem;
+      }
+      .stories {
+        display: grid;
+        gap: 1.5rem;
+      }
+      .story-card {
+        padding: 1rem;
+        overflow: hidden;
+      }
+      .video-cover {
+        position: relative;
+        border-radius: 17px;
+        overflow: hidden;
+      }
+      .video-cover img {
+        height: 250px;
+        transition:
+          transform 0.35s ease,
+          filter 0.35s ease;
+      }
+      .video-cover:hover img,
+      .video-cover:focus-visible img {
+        transform: scale(1.025);
+        filter: brightness(1.04);
+      }
+      .video-cover:hover {
+        box-shadow: 0 10px 28px rgba(30, 58, 95, 0.14);
+      }
+      .play {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 58px;
+        height: 58px;
+        border: 0;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #fff;
+        color: var(--green);
+        cursor: pointer;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+      .video-cover.playing:after {
+        content: "Cuplikan video";
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: rgba(30, 58, 95, 0.65);
+        color: white;
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+      }
+      .strip {
+        display: flex;
+        gap: 0.65rem;
+        overflow-x: auto;
+        padding-top: 0.75rem;
+        scroll-snap-type: x mandatory;
+      }
+      .strip img {
+        width: 115px;
+        height: 92px;
+        flex: 0 0 auto;
+        border-radius: 13px;
+        scroll-snap-align: start;
+      }
+      .people-strip {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        padding: 1.5rem 0 1rem;
+        scroll-snap-type: x mandatory;
+      }
+      .person {
+        min-width: 230px;
+        flex: 0 0 230px;
+        padding: 1.25rem;
+        scroll-snap-align: start;
+      }
+      .person img {
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        border: 4px solid var(--sky);
+      }
+      .tribute {
+        display: grid;
+        gap: 1.5rem;
+        align-items: center;
+      }
+      .tribute img {
+        height: 400px;
+        border-radius: 28px;
+      }
+      .masonry {
+        columns: 2;
+        column-gap: 0.8rem;
+      }
+      .masonry img {
+        width: 100%;
+        margin: 0 0 0.8rem;
+        border-radius: 16px;
+        display: block;
+        break-inside: avoid;
+      }
+      .closing {
+        min-height: calc(100 * min(var(--vh, 1vh), 1vh));
+        position: relative;
+        color: white;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 2rem;
+        isolation: isolate;
+      }
+      .closing:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(16, 39, 54, 0.72);
+        z-index: -1;
+      }
+      .closing img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+      }
+      .social {
+        display: flex;
+        justify-content: center;
+        gap: 0.65rem;
+      }
+      .social button {
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        background: transparent;
+        color: white;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+      }
+      @media (min-width: 700px) {
+        .chapter {
+          padding: 7rem 2rem;
+        }
+        .info-grid {
+          grid-template-columns: repeat(5, 1fr);
+        }
+        .info-card:last-child {
+          grid-column: auto;
+        }
+        .feature-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .activity-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .timeline {
+          margin-left: 50%;
+          padding-left: 3rem;
+        }
+        .timeline-item {
+          max-width: 430px;
+        }
+        .timeline-item:nth-child(even) {
+          transform: translateX(-calc(100% + 6rem));
+          text-align: right;
+        }
+        .timeline-item:nth-child(even):before {
+          left: auto;
+          right: -3.48rem;
+        }
+        .stories {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .story-card .video-cover img {
+          height: 210px;
+        }
+        .tribute {
+          grid-template-columns: 0.85fr 1.15fr;
+        }
+        .masonry {
+          columns: 4;
+        }
+        .hero {
+          padding: 2rem;
+        }
+        .hero-copy {
+          padding-bottom: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body data-template-id="__page-root" style="background: rgb(255, 255, 255)">
+    &lt;!-- Semua aset Canva telah diganti dengan path lokal assets/images/.
+    --&gt;
+    <header class="absolute top-0 z-20 w-full p-5">
+      <nav
+        aria-label="Identitas memorial"
+        class="mx-auto flex max-w-7xl items-center justify-between"
+      >
+        <div class="flex gap-2">
+          <img
+            alt="logo abdurrab.jpg"
+            class="logo"
+            data-template-id="hero-logo-1"
+            loading="lazy"
+            src="assets/images/logo-abdurrab-jpg.jpg"
+          />
+          <img
+            alt="WhatsApp Image 2026-07-31 at 22.54.51.jpg"
+            class="logo"
+            data-template-id="hero-logo-2"
+            loading="lazy"
+            src="assets/images/whatsapp-image-2026-07-31-at-22-54-51-jpg.jpg"
+          />
+        </div>
+        <span
+          class="text-xs font-semibold tracking-[.18em] text-white"
+          data-template-id="hero-nav-label"
+          style="
+            color: rgb(255, 255, 255);
+            font-weight: 700;
+            font-style: normal;
+            font-size: 16px;
+          "
+          >KKN UNIVERSITAS ABDURRAB</span
+        >
+      </nav>
+    </header>
+    <main>
+      <section aria-labelledby="hero-title" class="hero">
+        <div class="hero-bg">
+          <img
+            alt="WhatsApp Image 2026-08-19 at 12.14.42.jpg"
+            class="photo h-full"
+            data-template-id="hero-image"
+            loading="eager"
+            src="assets/images/whatsapp-image-2026-08-19-at-12-14-42-jpg.jpg"
+          />
+        </div>
+        <div class="hero-copy">
+          <p
+            class="text-sm font-semibold tracking-[.22em] uppercase"
+            data-template-id="hero-kicker"
+            style="
+              color: rgb(255, 255, 255);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 16px;
+            "
+          >
+            Digital Memory Book · 2026
+          </p>
+          <h1
+            class="hero-title"
+            data-template-id="hero-title"
+            id="hero-title"
+            style="
+              color: rgb(255, 255, 255);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 32px;
+            "
+          >
+            Desa Wonosari
+          </h1>
+          <p
+            class="text-lg font-medium"
+            data-template-id="hero-subtitle"
+            style="
+              color: rgb(217, 243, 255);
+              font-weight: 600;
+              font-style: normal;
+              font-size: 20px;
+            "
+          >
+            Pulau Bengkalis
+          </p>
+          <p
+            class="display-serif mt-6 max-w-xl text-xl italic leading-relaxed"
+            data-template-id="hero-quote"
+            style="
+              color: rgb(255, 255, 255);
+              font-weight: 400;
+              font-style: italic;
+              font-size: 16px;
+            "
+          >
+            “Kami datang untuk mengabdi, namun pulang membawa cerita.”
+          </p>
+          <button
+            class="hero-button mt-8"
+            data-template-id="hero-button"
+            id="explore-button"
+            style="
+              background: rgb(255, 255, 255);
+              color: rgb(30, 58, 95);
+              font-weight: 700;
+            "
+          >
+            <span
+              data-template-id="hero-button-label"
+              style="
+                color: rgb(30, 58, 95);
+                font-weight: 700;
+                font-style: normal;
+                font-size: 16px;
+              "
+              >Mulai Menjelajah</span
+            ><i data-lucide="arrow-down" width="17"></i>
+          </button>
+          <p
+            class="mt-8 text-xs tracking-[.15em] uppercase opacity-80"
+            data-template-id="scroll-label"
+            style="
+              color: rgb(255, 255, 255);
+              font-weight: 400;
+              font-style: normal;
+              font-size: 16px;
+            "
+          >
+            Gulir untuk memulai
+          </p>
+        </div>
+      </section>
+      <section aria-labelledby="about-title" class="chapter" id="home">
+        <span class="leaf w-48 h-48 -right-12 top-10"></span>
+        <div class="chapter-inner">
+          <p
+            class="eyebrow"
+            data-template-id="about-kicker"
+            style="
+              color: rgb(62, 142, 90);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 16px;
+            "
+          >
+            Bab 01 · Mengenal
+          </p>
+          <h2
+            class="section-title reveal"
+            data-template-id="about-title"
+            id="about-title"
+            style="
+              color: rgb(30, 58, 95);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 24px;
+            "
+          >
+            Desa yang Menjadi Rumah Kami
+          </h2>
+          <p
+            class="section-quote reveal"
+            data-template-id="about-quote"
+            style="
+              color: rgb(84, 112, 141);
+              font-weight: 400;
+              font-style: italic;
+              font-size: 16px;
+            "
+          >
+            “Dari hutan yang lebat, tumbuh sebuah desa yang terus berkembang
+            bersama masyarakatnya.”
+          </p>
+          <div class="grid gap-6 mt-10 md:grid-cols-[1.3fr_.7fr]">
+            <div>
+              <img
+                alt="11231.jpg"
+                class="photo rounded-[28px] h-[360px] reveal"
+                data-template-id="village-photo"
+                loading="lazy"
+                src="assets/images/11231-jpg.jpg"
+              />
+              <p
+                class="mt-5 text-base leading-7 text-slate-600"
+                data-template-id="village-description"
+                style="
+                  color: rgb(75, 85, 99);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Wonosari berasal dari kata “wono” yang berarti hutan dan “sari”
+                yang berarti pusat atau inti. Sekitar tahun 1920, wilayah yang
+                dahulu berupa hutan mulai dibuka oleh para pendatang dari Jawa.
+                Setelah Indonesia merdeka, pada sekitar tahun 1946, Kampung
+                Wonosari berubah menjadi Desa Wonosari. Sejak saat itu, desa
+                terus berkembang bersama masyarakatnya.
+              </p>
+            </div>
+            <aside class="space-y-4">
+              <div class="info-grid">
+                <article class="info-card reveal">
+                  <h3
+                    class="text-xs font-bold uppercase tracking-wider"
+                    data-template-id="info-history-title"
+                    style="
+                      color: rgb(30, 58, 95);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 19px;
+                    "
+                  >
+                    1920
+                  </h3>
+                  <p
+                    class="mt-2 text-sm text-slate-500"
+                    data-template-id="info-history-text"
+                    style="
+                      color: rgb(107, 114, 128);
+                      font-weight: 400;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    Awal Pembukaan
+                  </p>
+                </article>
+                <article class="info-card reveal">
+                  <h3
+                    class="text-xs font-bold uppercase tracking-wider"
+                    data-template-id="info-population-title"
+                    style="
+                      color: rgb(30, 58, 95);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 19px;
+                    "
+                  >
+                    1946
+                  </h3>
+                  <p
+                    class="mt-2 text-sm text-slate-500"
+                    data-template-id="info-population-text"
+                    style="
+                      color: rgb(107, 114, 128);
+                      font-weight: 400;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    Menjadi Desa
+                  </p>
+                </article>
+                <article class="info-card reveal">
+                  <h3
+                    class="text-xs font-bold uppercase tracking-wider"
+                    data-template-id="info-area-title"
+                    style="
+                      color: rgb(30, 58, 95);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 19px;
+                    "
+                  >
+                    2020
+                  </h3>
+                  <p
+                    class="mt-2 text-sm text-slate-500"
+                    data-template-id="info-area-text"
+                    style="
+                      color: rgb(107, 114, 128);
+                      font-weight: 400;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    42 RT - 12 RW - 6 Dusun
+                  </p>
+                </article>
+                <article class="info-card reveal">
+                  <h3
+                    class="text-xs font-bold uppercase tracking-wider"
+                    data-template-id="info-location-title"
+                    style="
+                      color: rgb(30, 58, 95);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 19px;
+                    "
+                  >
+                    2021
+                  </h3>
+                  <p
+                    class="mt-2 text-sm text-slate-500"
+                    data-template-id="info-location-text"
+                    style="
+                      color: rgb(107, 114, 128);
+                      font-weight: 400;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    6 Dusun
+                  </p>
+                </article>
+                <article class="info-card reveal">
+                  <h3
+                    class="text-xs font-bold uppercase tracking-wider"
+                    data-template-id="info-potential-title"
+                    style="
+                      color: rgb(30, 58, 95);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 19px;
+                    "
+                  >
+                    Potensi Desa
+                  </h3>
+                  <p
+                    class="mt-2 text-sm text-slate-500"
+                    data-template-id="info-potential-text"
+                    style="
+                      color: rgb(107, 114, 128);
+                      font-weight: 400;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    Pertanian, perikanan, dan kekuatan gotong royong.
+                  </p>
+                </article>
+              </div>
+              <img
+                alt="WhatsApp Image 2026-08-28 at 12.25.53.jpg"
+                class="photo h-44 rounded-[20px]"
+                data-template-id="village-map"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-28-at-12-25-53-jpg.jpg"
+              />
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="beauty-title" class="chapter bg-[#d9f3ff]">
+        <div class="chapter-inner">
+          <p
+            class="eyebrow"
+            data-template-id="beauty-kicker"
+            style="
+              color: rgb(62, 142, 90);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 16px;
+            "
+          >
+            Bab 02 · Lanskap Kehidupan
+          </p>
+          <h2
+            class="section-title"
+            data-template-id="beauty-title"
+            id="beauty-title"
+            style="
+              color: rgb(30, 58, 95);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 24px;
+            "
+          >
+            Keindahan dalam Kesederhanaan
+          </h2>
+          <p
+            class="section-quote"
+            data-template-id="beauty-quote"
+            style="
+              color: rgb(84, 112, 141);
+              font-weight: 400;
+              font-style: italic;
+              font-size: 16px;
+            "
+          >
+            “Di balik hamparan sawah dan kehidupan masyarakat, kami menemukan
+            banyak pelajaran.”
+          </p>
+          <div class="feature-grid mt-10">
+            <article class="feature-card">
+              <img
+                alt="WhatsApp Image 2026-08-27 at 00.53.13.jpg"
+                class="photo h-full absolute"
+                data-template-id="feature-agriculture-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-27-at-00-53-13-jpg.jpg"
+              />
+              <div>
+                <h3
+                  class="font-bold"
+                  data-template-id="feature-agriculture-title"
+                  style="
+                    color: rgb(255, 255, 255);
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: 19px;
+                  "
+                >
+                  Pertanian
+                </h3>
+                <p
+                  class="text-sm opacity-90"
+                  data-template-id="feature-agriculture-text"
+                  style="
+                    color: rgb(255, 255, 255);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                >
+                  Ruang tumbuh yang mengajarkan kesabaran.
+                </p>
+              </div>
+            </article>
+            <article class="feature-card">
+              <img
+                alt="WhatsApp Image 2026-08-31 at 20.21.45.jpg"
+                class="photo h-full absolute"
+                data-template-id="feature-fisheries-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-31-at-20-21-45-jpg.jpg"
+              />
+              <div>
+                <h3
+                  class="font-bold"
+                  data-template-id="feature-fisheries-title"
+                  style="
+                    color: rgb(255, 255, 255);
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: 19px;
+                  "
+                >
+                  Perikanan
+                </h3>
+                <p
+                  class="text-sm opacity-90"
+                  data-template-id="feature-fisheries-text"
+                  style="
+                    color: rgb(255, 255, 255);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                >
+                  Air, perahu, dan rezeki setiap pagi.
+                </p>
+              </div>
+            </article>
+            <article class="feature-card">
+              <img
+                alt="121141.jpg"
+                class="photo h-full absolute"
+                data-template-id="feature-community-image"
+                loading="lazy"
+                src="assets/images/121141-jpg.jpg"
+              />
+              <div>
+                <h3
+                  class="font-bold"
+                  data-template-id="feature-community-title"
+                  style="
+                    color: rgb(255, 255, 255);
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: 19px;
+                  "
+                >
+                  Masyarakat
+                </h3>
+                <p
+                  class="text-sm opacity-90"
+                  data-template-id="feature-community-text"
+                  style="
+                    color: rgb(255, 255, 255);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                >
+                  Keramahan yang selalu terasa dekat.
+                </p>
+              </div>
+            </article>
+            <article class="feature-card">
+              <img
+                alt="WhatsApp Image 2026-08-26 at 23.05.39.jpg"
+                class="photo h-full absolute"
+                data-template-id="feature-culture-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-26-at-23-05-39-jpg.jpg"
+              />
+              <div>
+                <h3
+                  class="font-bold"
+                  data-template-id="feature-culture-title"
+                  style="
+                    color: rgb(255, 255, 255);
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: 19px;
+                  "
+                >
+                  Budaya
+                </h3>
+                <p
+                  class="text-sm opacity-90"
+                  data-template-id="feature-culture-text"
+                  style="
+                    color: rgb(255, 255, 255);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                >
+                  Warisan yang hidup dalam keseharian.
+                </p>
+              </div>
+            </article>
+          </div>
+          <img
+            alt="WhatsApp Image 2026-08-28 at 11.30.46.jpg"
+            class="photo h-64 md:h-96 rounded-[28px] mt-6"
+            data-template-id="landscape-image"
+            loading="lazy"
+            src="assets/images/whatsapp-image-2026-08-28-at-11-30-46-jpg.jpg"
+          />
+        </div>
+      </section>
+      <section aria-labelledby="impact-title" class="chapter">
+        <div class="chapter-inner">
+          <p
+            class="eyebrow"
+            data-template-id="impact-kicker"
+            style="
+              color: rgb(62, 142, 90);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 16px;
+            "
+          >
+            Bab 03 · Pengabdian
+          </p>
+          <h2
+            class="section-title"
+            data-template-id="impact-title"
+            id="impact-title"
+            style="
+              color: rgb(30, 58, 95);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 24px;
+            "
+          >
+            Langkah Kecil, Dampak Besar
+          </h2>
+          <p
+            class="section-quote"
+            data-template-id="impact-quote"
+            style="
+              color: rgb(84, 112, 141);
+              font-weight: 400;
+              font-style: italic;
+              font-size: 16px;
+            "
+          >
+            “Setiap kegiatan menjadi bagian dari pengabdian kami.”
+          </p>
+          <div class="activity-grid mt-10">
+            <article class="paper-card activity-card">
+              <img
+                alt="WhatsApp Image 2026-08-28 at 11.36.55.jpg"
+                class="photo"
+                data-template-id="activity-1-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-28-at-11-36-55-jpg.jpg"
+              />
+              <div class="activity-content">
+                <span
+                  class="activity-icon"
+                  data-template-id="activity-1-icon"
+                  style="
+                    background: rgb(217, 243, 255);
+                    color: rgb(62, 142, 90);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                  >✦</span
+                >
+                <h3
+                  class="mt-3 font-bold"
+                  data-template-id="activity-1-title"
+                  style="
+                    color: rgb(30, 58, 95);
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: 19px;
+                  "
+                >
+                  Pendidikan
+                </h3>
+                <p
+                  class="mt-2 text-sm leading-6 text-slate-500"
+                  data-template-id="activity-1-text"
+                  style="
+                    color: rgb(107, 114, 128);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                >
+                  Berbagi ruang belajar, tawa, dan rasa ingin tahu.
+                </p>
+              </div>
+            </article>
+            <article class="paper-card activity-card">
+              <img
+                alt="112233.jpg"
+                class="photo"
+                data-template-id="activity-2-image"
+                loading="lazy"
+                src="assets/images/112233-jpg.jpg"
+              />
+              <div class="activity-content">
+                <span
+                  class="activity-icon"
+                  data-template-id="activity-2-icon"
+                  style="
+                    background: rgb(217, 243, 255);
+                    color: rgb(62, 142, 90);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                  >⌂</span
+                >
+                <h3
+                  class="mt-3 font-bold"
+                  data-template-id="activity-2-title"
+                  style="
+                    color: rgb(30, 58, 95);
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: 19px;
+                  "
+                >
+                  Infrastruktur
+                </h3>
+                <p
+                  class="mt-2 text-sm leading-6 text-slate-500"
+                  data-template-id="activity-2-text"
+                  style="
+                    color: rgb(107, 114, 128);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                >
+                  Menata langkah bersama untuk lingkungan yang lebih baik.
+                </p>
+              </div>
+            </article>
+            <article class="paper-card activity-card">
+              <img
+                alt="WhatsApp Image 2026-08-27 at 00.04.43.jpg"
+                class="photo"
+                data-template-id="activity-3-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-27-at-00-04-43-jpg.jpg"
+              />
+              <div class="activity-content">
+                <span
+                  class="activity-icon"
+                  data-template-id="activity-3-icon"
+                  style="
+                    background: rgb(217, 243, 255);
+                    color: rgb(62, 142, 90);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                  >+</span
+                >
+                <h3
+                  class="mt-3 font-bold"
+                  data-template-id="activity-3-title"
+                  style="
+                    color: rgb(30, 58, 95);
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: 19px;
+                  "
+                >
+                  Kesehatan
+                </h3>
+                <p
+                  class="mt-2 text-sm leading-6 text-slate-500"
+                  data-template-id="activity-3-text"
+                  style="
+                    color: rgb(107, 114, 128);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                >
+                  Menguatkan kebiasaan sehat untuk masa depan.
+                </p>
+              </div>
+            </article>
+            <article class="paper-card activity-card">
+              <img
+                alt="WhatsApp Image 2026-08-28 at 11.01.06.jpg"
+                class="photo"
+                data-template-id="activity-4-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-28-at-11-01-06-jpg.jpg"
+              />
+              <div class="activity-content">
+                <span
+                  class="activity-icon"
+                  data-template-id="activity-4-icon"
+                  style="
+                    background: rgb(217, 243, 255);
+                    color: rgb(62, 142, 90);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                  >♧</span
+                >
+                <h3
+                  class="mt-3 font-bold"
+                  data-template-id="activity-4-title"
+                  style="
+                    color: rgb(30, 58, 95);
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: 19px;
+                  "
+                >
+                  Lingkungan
+                </h3>
+                <p
+                  class="mt-2 text-sm leading-6 text-slate-500"
+                  data-template-id="activity-4-text"
+                  style="
+                    color: rgb(107, 114, 128);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                >
+                  Menjaga alam sebagai rumah yang diwariskan.
+                </p>
+              </div>
+            </article>
+            <article class="paper-card activity-card">
+              <img
+                alt="IMG_8409.HEIC"
+                class="photo"
+                data-template-id="activity-5-image"
+                loading="lazy"
+                src="assets/images/img-8409-heic.jpg"
+              />
+              <div class="activity-content">
+                <span
+                  class="activity-icon"
+                  data-template-id="activity-5-icon"
+                  style="
+                    background: rgb(217, 243, 255);
+                    color: rgb(62, 142, 90);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                  >✺</span
+                >
+                <h3
+                  class="mt-3 font-bold"
+                  data-template-id="activity-5-title"
+                  style="
+                    color: rgb(30, 58, 95);
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: 19px;
+                  "
+                >
+                  Pemberdayaan
+                </h3>
+                <p
+                  class="mt-2 text-sm leading-6 text-slate-500"
+                  data-template-id="activity-5-text"
+                  style="
+                    color: rgb(107, 114, 128);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                >
+                  Merawat kreativitas dan potensi generasi muda.
+                </p>
+              </div>
+            </article>
+            <article class="paper-card activity-card">
+              <img
+                alt="IMG_8231.HEIC"
+                class="photo"
+                data-template-id="activity-6-image"
+                loading="lazy"
+                src="assets/images/img-8231-heic.jpg"
+              />
+              <div class="activity-content">
+                <span
+                  class="activity-icon"
+                  data-template-id="activity-6-icon"
+                  style="
+                    background: rgb(217, 243, 255);
+                    color: rgb(62, 142, 90);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                  >♡</span
+                >
+                <h3
+                  class="mt-3 font-bold"
+                  data-template-id="activity-6-title"
+                  style="
+                    color: rgb(30, 58, 95);
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: 19px;
+                  "
+                >
+                  Kebersamaan
+                </h3>
+                <p
+                  class="mt-2 text-sm leading-6 text-slate-500"
+                  data-template-id="activity-6-text"
+                  style="
+                    color: rgb(107, 114, 128);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                >
+                  Merayakan pertemuan melalui cerita dan tradisi.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="timeline-title" class="chapter bg-[#fff8f1]">
+        <div class="chapter-inner">
+          <p
+            class="eyebrow"
+            data-template-id="timeline-kicker"
+            style="
+              color: rgb(62, 142, 90);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 16px;
+            "
+          >
+            Bab 04 · Perjalanan
+          </p>
+          <h2
+            class="section-title"
+            data-template-id="timeline-title"
+            id="timeline-title"
+            style="
+              color: rgb(30, 58, 95);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 24px;
+            "
+          >
+            Hari-hari yang Tak Terlupakan
+          </h2>
+          <p
+            class="section-quote"
+            data-template-id="timeline-quote"
+            style="
+              color: rgb(84, 112, 141);
+              font-weight: 400;
+              font-style: italic;
+              font-size: 16px;
+            "
+          >
+            “Perjalanan kami dipenuhi cerita yang akan selalu dikenang.”
+          </p>
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="paper-card timeline-card">
+                <img
+                  alt="IMG_6911.HEIC"
+                  class="photo"
+                  data-template-id="timeline-1-image"
+                  loading="lazy"
+                  src="assets/images/img-6911-heic.jpg"
+                />
+                <div class="timeline-copy">
+                  <p
+                    class="text-xs font-bold text-[#3e8e5a]"
+                    data-template-id="timeline-1-date"
+                    style="
+                      color: rgb(62, 142, 90);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    Hari Pertama
+                  </p>
+                  <h3
+                    class="mt-1 font-bold"
+                    data-template-id="timeline-1-title"
+                    style="
+                      color: rgb(30, 58, 95);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 19px;
+                    "
+                  >
+                    Kedatangan
+                  </h3>
+                  <p
+                    class="mt-2 text-sm text-slate-500"
+                    data-template-id="timeline-1-text"
+                    style="
+                      color: rgb(107, 114, 128);
+                      font-weight: 400;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    Langkah pertama yang disambut hangat.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="paper-card timeline-card">
+                <img
+                  alt="WhatsApp Image 2026-08-28 at 11.01.06.jpg"
+                  class="photo"
+                  data-template-id="timeline-2-image"
+                  loading="lazy"
+                  src="assets/images/whatsapp-image-2026-08-28-at-11-01-06-jpg-2.jpg"
+                />
+                <div class="timeline-copy">
+                  <p
+                    class="text-xs font-bold text-[#3e8e5a]"
+                    data-template-id="timeline-2-date"
+                    style="
+                      color: rgb(62, 142, 90);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    Minggu Pertama
+                  </p>
+                  <h3
+                    class="mt-1 font-bold"
+                    data-template-id="timeline-2-title"
+                    style="
+                      color: rgb(30, 58, 95);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 19px;
+                    "
+                  >
+                    Observasi
+                  </h3>
+                  <p
+                    class="mt-2 text-sm text-slate-500"
+                    data-template-id="timeline-2-text"
+                    style="
+                      color: rgb(107, 114, 128);
+                      font-weight: 400;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    Mendengar, berjalan, dan memahami desa.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="paper-card timeline-card">
+                <img
+                  alt="IMG_7264.HEIC"
+                  class="photo"
+                  data-template-id="timeline-3-image"
+                  loading="lazy"
+                  src="assets/images/img-7264-heic.jpg"
+                />
+                <div class="timeline-copy">
+                  <p
+                    class="text-xs font-bold text-[#3e8e5a]"
+                    data-template-id="timeline-3-date"
+                    style="
+                      color: rgb(62, 142, 90);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    Minggu Kedua
+                  </p>
+                  <h3
+                    class="mt-1 font-bold"
+                    data-template-id="timeline-3-title"
+                    style="
+                      color: rgb(30, 58, 95);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 19px;
+                    "
+                  >
+                    Program Bersama
+                  </h3>
+                  <p
+                    class="mt-2 text-sm text-slate-500"
+                    data-template-id="timeline-3-text"
+                    style="
+                      color: rgb(107, 114, 128);
+                      font-weight: 400;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    Gagasan tumbuh bersama masyarakat.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="paper-card timeline-card">
+                <img
+                  alt="pypy.jpg"
+                  class="photo"
+                  data-template-id="timeline-4-image"
+                  loading="lazy"
+                  src="assets/images/pypy-jpg.jpg"
+                />
+                <div class="timeline-copy">
+                  <p
+                    class="text-xs font-bold text-[#3e8e5a]"
+                    data-template-id="timeline-4-date"
+                    style="
+                      color: rgb(62, 142, 90);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    Minggu Ketiga
+                  </p>
+                  <h3
+                    class="mt-1 font-bold"
+                    data-template-id="timeline-4-title"
+                    style="
+                      color: rgb(30, 58, 95);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 19px;
+                    "
+                  >
+                    Aktivitas
+                  </h3>
+                  <p
+                    class="mt-2 text-sm text-slate-500"
+                    data-template-id="timeline-4-text"
+                    style="
+                      color: rgb(107, 114, 128);
+                      font-weight: 400;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    Kerja kecil yang dilakukan dengan sepenuh hati.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="paper-card timeline-card">
+                <img
+                  alt="Indonesian villagers gather for a cultural ceremony."
+                  class="photo"
+                  data-template-id="timeline-5-image"
+                  loading="lazy"
+                  src="https://images.pexels.com/photos/19294274/pexels-photo-19294274.jpeg"
+                />
+                <div class="timeline-copy">
+                  <p
+                    class="text-xs font-bold text-[#3e8e5a]"
+                    data-template-id="timeline-5-date"
+                    style="
+                      color: rgb(62, 142, 90);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    Hari Terakhir
+                  </p>
+                  <h3
+                    class="mt-1 font-bold"
+                    data-template-id="timeline-5-title"
+                    style="
+                      color: rgb(30, 58, 95);
+                      font-weight: 700;
+                      font-style: normal;
+                      font-size: 19px;
+                    "
+                  >
+                    Perpisahan
+                  </h3>
+                  <p
+                    class="mt-2 text-sm text-slate-500"
+                    data-template-id="timeline-5-text"
+                    style="
+                      color: rgb(107, 114, 128);
+                      font-weight: 400;
+                      font-style: normal;
+                      font-size: 16px;
+                    "
+                  >
+                    Bukan akhir, melainkan kenangan yang tinggal.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="stories-title" class="chapter">
+        <div class="chapter-inner">
+          <p
+            class="eyebrow"
+            data-template-id="stories-kicker"
+            style="
+              color: rgb(62, 142, 90);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 16px;
+            "
+          >
+            Bab 05 · Potongan Kisah
+          </p>
+          <h2
+            class="section-title"
+            data-template-id="stories-title"
+            id="stories-title"
+            style="
+              color: rgb(30, 58, 95);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 24px;
+            "
+          >
+            Cerita Kami
+          </h2>
+          <p
+            class="section-quote"
+            data-template-id="stories-quote"
+            style="
+              color: rgb(84, 112, 141);
+              font-weight: 400;
+              font-style: italic;
+              font-size: 16px;
+            "
+          >
+            “Setiap momen memiliki kisahnya sendiri.”
+          </p>
+          <div class="stories mt-10">
+            <article class="paper-card story-card">
+              <h3
+                class="mb-3 font-bold"
+                data-template-id="story-1-title"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Menyapa Wonosari
+              </h3>
+              <button
+                aria-label="Putar cerita satu"
+                class="video-cover w-full"
+                data-video-url="https://drive.google.com/file/d/1yKp_IC_1e94jZjlhk0Xlg0wYJU8wEREK/view?usp=drive_link"
+              >
+                <img
+                  alt="1212.jpg"
+                  class="photo"
+                  data-template-id="story-1-video"
+                  loading="lazy"
+                  src="assets/images/1212-jpg.jpg"
+                /><span class="play"><i data-lucide="play"></i></span>
+              </button>
+              <div class="strip">
+                <img
+                  alt="WhatsApp Image 2026-08-28 at 11.19.45.jpg"
+                  class="photo"
+                  data-template-id="s1g1"
+                  loading="lazy"
+                  src="assets/images/whatsapp-image-2026-08-28-at-11-19-45-jpg.jpg"
+                /><img
+                  alt="234.jpg"
+                  class="photo"
+                  data-template-id="s1g2"
+                  loading="lazy"
+                  src="assets/images/234-jpg.jpg"
+                /><img
+                  alt="22233.jpg"
+                  class="photo"
+                  data-template-id="s1g3"
+                  loading="lazy"
+                  src="assets/images/22233-jpg.jpg"
+                /><img
+                  alt="11122.jpg"
+                  class="photo"
+                  data-template-id="s1g4"
+                  loading="lazy"
+                  src="assets/images/11122-jpg.jpg"
+                /><img
+                  alt="1121.jpg"
+                  class="photo"
+                  data-template-id="s1g5"
+                  loading="lazy"
+                  src="assets/images/1121-jpg.jpg"
+                />
+              </div>
+            </article>
+            <article class="paper-card story-card">
+              <h3
+                class="mb-3 font-bold"
+                data-template-id="story-2-title"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Bekerja Bersama
+              </h3>
+              <button
+                aria-label="Putar cerita dua"
+                class="video-cover w-full"
+                data-video-url="https://drive.google.com/file/d/1DyQVmfDRRKDeYU_2OltzWVcvvi30QFmB/view?usp=drive_link"
+              >
+                <img
+                  alt="11.jpg"
+                  class="photo"
+                  data-template-id="story-2-video"
+                  loading="lazy"
+                  src="assets/images/11-jpg.jpg"
+                /><span class="play"><i data-lucide="play"></i></span>
+              </button>
+              <div class="strip">
+                <img
+                  alt="IMG_7675.HEIC"
+                  class="photo"
+                  data-template-id="s2g1"
+                  loading="lazy"
+                  src="assets/images/img-7675-heic.jpg"
+                /><img
+                  alt="WhatsApp Image 2026-08-28 at 12.10.10.jpg"
+                  class="photo"
+                  data-template-id="s2g2"
+                  loading="lazy"
+                  src="assets/images/whatsapp-image-2026-08-28-at-12-10-10-jpg.jpg"
+                /><img
+                  alt="123.jpg"
+                  class="photo"
+                  data-template-id="s2g3"
+                  loading="lazy"
+                  src="assets/images/123-jpg.jpg"
+                /><img
+                  alt="IMG_8374.HEIC"
+                  class="photo"
+                  data-template-id="s2g4"
+                  loading="lazy"
+                  src="assets/images/img-8374-heic.jpg"
+                /><img
+                  alt="23466.jpg"
+                  class="photo"
+                  data-template-id="s2g5"
+                  loading="lazy"
+                  src="assets/images/23466-jpg.jpg"
+                />
+              </div>
+            </article>
+            <article class="paper-card story-card">
+              <h3
+                class="mb-3 font-bold"
+                data-template-id="story-3-title"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Pulang Membawa Cerita
+              </h3>
+              <button
+                aria-label="Putar cerita tiga"
+                class="video-cover w-full"
+                data-video-url="https://drive.google.com/file/d/1D954loXUncb4BdNgihLk4chGkbM976a7/view?usp=sharing"
+              >
+                <img
+                  alt="2.jpg"
+                  class="photo"
+                  data-template-id="story-3-video"
+                  loading="lazy"
+                  src="assets/images/2-jpg.jpg"
+                /><span class="play"><i data-lucide="play"></i></span>
+              </button>
+              <div class="strip">
+                <img
+                  alt="1223.jpg"
+                  class="photo"
+                  data-template-id="s3g1"
+                  loading="lazy"
+                  src="assets/images/1223-jpg.jpg"
+                /><img
+                  alt="1132.jpg"
+                  class="photo"
+                  data-template-id="s3g2"
+                  loading="lazy"
+                  src="assets/images/1132-jpg.jpg"
+                /><img
+                  alt="1211.jpg"
+                  class="photo"
+                  data-template-id="s3g3"
+                  loading="lazy"
+                  src="assets/images/1211-jpg.jpg"
+                /><img
+                  alt="IMG_6537.JPG"
+                  class="photo"
+                  data-template-id="s3g4"
+                  loading="lazy"
+                  src="assets/images/img-6537-jpg.jpg"
+                /><img
+                  alt="IMG_7220.heic"
+                  class="photo"
+                  data-template-id="s3g5"
+                  loading="lazy"
+                  src="assets/images/img-7220-heic.jpg"
+                />
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="people-title" class="chapter bg-[#d9f3ff]">
+        <div class="chapter-inner">
+          <p
+            class="eyebrow"
+            data-template-id="people-kicker"
+            style="
+              color: rgb(62, 142, 90);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 16px;
+            "
+          >
+            Bab 06 · Keluarga KKN
+          </p>
+          <h2
+            class="section-title"
+            data-template-id="people-title"
+            id="people-title"
+            style="
+              color: rgb(30, 58, 95);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 24px;
+            "
+          >
+            Orang-Orang di Balik Cerita
+          </h2>
+          <p
+            class="section-quote"
+            data-template-id="people-quote"
+            style="
+              color: rgb(84, 112, 141);
+              font-weight: 400;
+              font-style: italic;
+              font-size: 16px;
+            "
+          >
+            “Perjalanan ini menjadi bermakna karena dilalui bersama.”
+          </p>
+          <div class="people-strip">
+            <article class="person paper-card">
+              <img
+                alt="dpl.jpg"
+                class="photo"
+                data-template-id="person-1-image"
+                loading="lazy"
+                src="assets/images/dpl-jpg.jpg"
+              />
+              <h3
+                class="font-bold"
+                data-template-id="person-1-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Sandi Akbar, S.FT., M.MRS., NMTC
+              </h3>
+              <p
+                class="text-sm text-[#3e8e5a]"
+                data-template-id="person-1-role"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Dospem Lapangan
+              </p>
+              <p
+                class="display-serif mt-4 text-sm italic text-slate-500"
+                data-template-id="person-1-quote"
+                style="
+                  color: rgb(107, 114, 128);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Menjadi pendengar adalah awal dari mengabdi.”
+              </p>
+            </article>
+            <article class="person paper-card">
+              <img
+                alt="WhatsApp Image 2026-08-26 at 23.05.42.jpg"
+                class="photo"
+                data-template-id="person-2-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-26-at-23-05-42-jpg.jpg"
+              />
+              <h3
+                class="font-bold"
+                data-template-id="person-2-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Sastro Suwondo
+              </h3>
+              <p
+                class="text-sm text-[#3e8e5a]"
+                data-template-id="person-2-role"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Ketua
+              </p>
+              <p
+                class="display-serif mt-4 text-sm italic text-slate-500"
+                data-template-id="person-2-quote"
+                style="
+                  color: rgb(107, 114, 128);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Rumah baru, keluarga baru.”
+              </p>
+            </article>
+            <article class="person paper-card">
+              <img
+                alt="WhatsApp Image 2026-08-26 at 23.05.42 (2).jpg"
+                class="photo"
+                data-template-id="person-3-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-26-at-23-05-42-2-jpg.jpg"
+              />
+              <h3
+                class="font-bold"
+                data-template-id="person-3-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Syaniati Nurkumalasari
+              </h3>
+              <p
+                class="text-sm text-[#3e8e5a]"
+                data-template-id="person-3-role"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Sekretaris 1
+              </p>
+              <p
+                class="display-serif mt-4 text-sm italic text-slate-500"
+                data-template-id="person-3-quote"
+                style="
+                  color: rgb(107, 114, 128);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Hal sederhana selalu punya makna.”
+              </p>
+            </article>
+            <article class="person paper-card">
+              <img
+                alt="WhatsApp Image 2026-08-26 at 23.05.41.jpg"
+                class="photo"
+                data-template-id="person-4-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-26-at-23-05-41-jpg.jpg"
+              />
+              <h3
+                class="font-bold"
+                data-template-id="person-4-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Zakiyul Kamal
+              </h3>
+              <p
+                class="text-sm text-[#3e8e5a]"
+                data-template-id="person-4-role"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Sekretaris 2
+              </p>
+              <p
+                class="display-serif mt-4 text-sm italic text-slate-500"
+                data-template-id="person-4-quote"
+                style="
+                  color: rgb(107, 114, 128);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Tumbuh bersama adalah hadiah.”
+              </p>
+            </article>
+            <article class="person paper-card">
+              <img
+                alt="WhatsApp Image 2026-08-26 at 23.05.41 (1).jpg"
+                class="photo"
+                data-template-id="person-5-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-26-at-23-05-41-1-jpg.jpg"
+              />
+              <h3
+                class="font-bold"
+                data-template-id="person-5-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Dwi Anggraini
+              </h3>
+              <p
+                class="text-sm text-[#3e8e5a]"
+                data-template-id="person-5-role"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Bendahara
+              </p>
+              <p
+                class="display-serif mt-4 text-sm italic text-slate-500"
+                data-template-id="person-5-quote"
+                style="
+                  color: rgb(107, 114, 128);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Satu bingkai, banyak kenangan.”
+              </p>
+            </article>
+            <article class="person paper-card">
+              <img
+                alt="WhatsApp Image 2026-08-26 at 23.05.40.jpg"
+                class="photo"
+                data-template-id="person-6-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-26-at-23-05-40-jpg.jpg"
+              />
+              <h3
+                class="font-bold"
+                data-template-id="person-6-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Wasni Dewita Putri
+              </h3>
+              <p
+                class="text-sm text-[#3e8e5a]"
+                data-template-id="person-6-role"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Humas
+              </p>
+              <p
+                class="display-serif mt-4 text-sm italic text-slate-500"
+                data-template-id="person-6-quote"
+                style="
+                  color: rgb(107, 114, 128);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Belajar juga berarti berbagi.”
+              </p>
+            </article>
+            <article class="person paper-card">
+              <img
+                alt="WhatsApp Image 2026-08-26 at 19.32.28.jpg"
+                class="photo"
+                data-template-id="person-7-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-26-at-19-32-28-jpg.jpg"
+              />
+              <h3
+                class="font-bold"
+                data-template-id="person-7-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Ramzani
+              </h3>
+              <p
+                class="text-sm text-[#3e8e5a]"
+                data-template-id="person-7-role"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Humas
+              </p>
+              <p
+                class="display-serif mt-4 text-sm italic text-slate-500"
+                data-template-id="person-7-quote"
+                style="
+                  color: rgb(107, 114, 128);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Merawat bumi, merawat masa depan.”
+              </p>
+            </article>
+            <article class="person paper-card">
+              <img
+                alt="WhatsApp Image 2026-08-26 at 23.05.40 (1).jpg"
+                class="photo"
+                data-template-id="person-8-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-26-at-23-05-40-1-jpg.jpg"
+              />
+              <h3
+                class="font-bold"
+                data-template-id="person-8-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Rizki Yunan
+              </h3>
+              <p
+                class="text-sm text-[#3e8e5a]"
+                data-template-id="person-8-role"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Humas
+              </p>
+              <p
+                class="display-serif mt-4 text-sm italic text-slate-500"
+                data-template-id="person-8-quote"
+                style="
+                  color: rgb(107, 114, 128);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Kebaikan selalu menular.”
+              </p>
+            </article>
+            <article class="person paper-card">
+              <img
+                alt="WhatsApp Image 2026-08-26 at 23.05.40 (2).jpg"
+                class="photo"
+                data-template-id="person-9-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-26-at-23-05-40-2-jpg.jpg"
+              />
+              <h3
+                class="font-bold"
+                data-template-id="person-9-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Pasma Wati
+              </h3>
+              <p
+                class="text-sm text-[#3e8e5a]"
+                data-template-id="person-9-role"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Divisi Acara
+              </p>
+              <p
+                class="display-serif mt-4 text-sm italic text-slate-500"
+                data-template-id="person-9-quote"
+                style="
+                  color: rgb(107, 114, 128);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Dekat dimulai dari menyapa.”
+              </p>
+            </article>
+            <article class="person paper-card">
+              <img
+                alt="WhatsApp Image 2026-08-26 at 19.31.35.jpg"
+                class="photo"
+                data-template-id="person-10-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-26-at-19-31-35-jpg.jpg"
+              />
+              <h3
+                class="font-bold"
+                data-template-id="person-10-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Putra Alpianda
+              </h3>
+              <p
+                class="text-sm text-[#3e8e5a]"
+                data-template-id="person-10-role"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Divisi Acara
+              </p>
+              <p
+                class="display-serif mt-4 text-sm italic text-slate-500"
+                data-template-id="person-10-quote"
+                style="
+                  color: rgb(107, 114, 128);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Cerita terbaik dibuat bersama.”
+              </p>
+            </article>
+            <article class="person paper-card">
+              <img
+                alt="pdd.jpg"
+                class="photo"
+                data-template-id="person-11-image"
+                loading="lazy"
+                src="assets/images/pdd-jpg.jpg"
+              />
+              <h3
+                class="font-bold"
+                data-template-id="person-11-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Melda
+              </h3>
+              <p
+                class="text-sm text-[#3e8e5a]"
+                data-template-id="person-11-role"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Divisi Dokumentasi
+              </p>
+              <p
+                class="display-serif mt-4 text-sm italic text-slate-500"
+                data-template-id="person-11-quote"
+                style="
+                  color: rgb(107, 114, 128);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Bergerak pelan, berdampak nyata.”
+              </p>
+            </article>
+            <article class="person paper-card">
+              <img
+                alt="WhatsApp Image 2026-08-26 at 19.31.36.jpg"
+                class="photo"
+                data-template-id="person-12-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-26-at-19-31-36-jpg.jpg"
+              />
+              <h3
+                class="font-bold"
+                data-template-id="person-12-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Nazala Fuji Anisa
+              </h3>
+              <p
+                class="text-sm text-[#3e8e5a]"
+                data-template-id="person-12-role"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Divisi Dokumentasi
+              </p>
+              <p
+                class="display-serif mt-4 text-sm italic text-slate-500"
+                data-template-id="person-12-quote"
+                style="
+                  color: rgb(107, 114, 128);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Hangatnya selalu terasa di meja makan.”
+              </p>
+            </article>
+            <article class="person paper-card">
+              <img
+                alt="WhatsApp Image 2026-08-26 at 23.05.42 (1).jpg"
+                class="photo"
+                data-template-id="person-13-image"
+                loading="lazy"
+                src="assets/images/whatsapp-image-2026-08-26-at-23-05-42-1-jpg.jpg"
+              />
+              <h3
+                class="font-bold"
+                data-template-id="person-13-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Excellia Putri
+              </h3>
+              <p
+                class="text-sm text-[#3e8e5a]"
+                data-template-id="person-13-role"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Divisi Konsumsi
+              </p>
+              <p
+                class="display-serif mt-4 text-sm italic text-slate-500"
+                data-template-id="person-13-quote"
+                style="
+                  color: rgb(107, 114, 128);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Wonosari akan selalu di hati.”
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="tribute-title" class="chapter">
+        <div class="chapter-inner">
+          <p
+            class="eyebrow"
+            data-template-id="tribute-kicker"
+            style="
+              color: rgb(62, 142, 90);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 16px;
+            "
+          >
+            Bab 07 · Sebuah Pesan
+          </p>
+          <h2
+            class="section-title"
+            data-template-id="tribute-title"
+            id="tribute-title"
+            style="
+              color: rgb(30, 58, 95);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 24px;
+            "
+          >
+            Ucapan dari Desa
+          </h2>
+          <p
+            class="section-quote"
+            data-template-id="tribute-quote"
+            style="
+              color: rgb(84, 112, 141);
+              font-weight: 400;
+              font-style: italic;
+              font-size: 16px;
+            "
+          >
+            “Terima kasih telah menjadi bagian dari keluarga kami.”
+          </p>
+          <div class="tribute mt-10 paper-card p-4 md:p-7">
+            <img
+              alt="Portrait of an elderly Indonesian man in traditional attire."
+              class="photo"
+              data-template-id="leader-image"
+              loading="lazy"
+              src="https://images.pexels.com/photos/37800533/pexels-photo-37800533.jpeg"
+            />
+            <div>
+              <p
+                class="text-xs font-bold uppercase tracking-[.16em] text-[#3e8e5a]"
+                data-template-id="leader-position"
+                style="
+                  color: rgb(62, 142, 90);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Tokoh Masyarakat Desa Wonosari
+              </p>
+              <h3
+                class="mt-2 text-3xl font-bold"
+                data-template-id="leader-name"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 700;
+                  font-style: normal;
+                  font-size: 19px;
+                "
+              >
+                Nama Perwakilan Desa
+              </h3>
+              <p
+                class="mt-5 leading-7 text-slate-600"
+                data-template-id="leader-bio"
+                style="
+                  color: rgb(75, 85, 99);
+                  font-weight: 400;
+                  font-style: normal;
+                  font-size: 16px;
+                "
+              >
+                Sosok yang setia mendampingi kehidupan masyarakat dan menjadi
+                jembatan hangat antara warga dengan mahasiswa KKN.
+              </p>
+              <div class="mt-6 border-l-2 border-[#3e8e5a] pl-4">
+                <h4
+                  class="font-bold"
+                  data-template-id="leader-achievements-title"
+                  style="
+                    color: rgb(30, 58, 95);
+                    font-weight: 700;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                >
+                  Jejak Pengabdian
+                </h4>
+                <p
+                  class="mt-2 text-sm leading-6 text-slate-500"
+                  data-template-id="leader-achievements"
+                  style="
+                    color: rgb(107, 114, 128);
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 16px;
+                  "
+                >
+                  Mendorong semangat gotong royong, pendidikan, serta
+                  kelestarian nilai-nilai lokal Desa Wonosari.
+                </p>
+              </div>
+              <p
+                class="display-serif mt-7 text-lg italic leading-8 text-[#1e3a5f]"
+                data-template-id="leader-message"
+                style="
+                  color: rgb(30, 58, 95);
+                  font-weight: 400;
+                  font-style: italic;
+                  font-size: 16px;
+                "
+              >
+                “Kehadiran kalian memberi warna baru. Semoga apa yang dimulai di
+                sini terus tumbuh menjadi kebaikan.”
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="gallery-title" class="chapter bg-[#fff8f1]">
+        <div class="chapter-inner">
+          <p
+            class="eyebrow"
+            data-template-id="gallery-kicker"
+            style="
+              color: rgb(62, 142, 90);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 16px;
+            "
+          >
+            Bab 08 · Arsip Visual
+          </p>
+          <h2
+            class="section-title"
+            data-template-id="gallery-title"
+            id="gallery-title"
+            style="
+              color: rgb(30, 58, 95);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 24px;
+            "
+          >
+            Jejak Kenangan
+          </h2>
+          <p
+            class="section-quote"
+            data-template-id="gallery-quote"
+            style="
+              color: rgb(84, 112, 141);
+              font-weight: 400;
+              font-style: italic;
+              font-size: 16px;
+            "
+          >
+            “Beberapa tempat akan selalu tinggal di hati, meski perjalanan telah
+            usai.”
+          </p>
+          <div class="masonry mt-10">
+            <img
+              alt="21.jpg"
+              class="photo"
+              data-template-id="gallery-1"
+              loading="lazy"
+              src="assets/images/21-jpg.jpg"
+            /><img
+              alt="IMG_7071.JPG"
+              class="photo"
+              data-template-id="gallery-2"
+              loading="lazy"
+              src="assets/images/img-7071-jpg.jpg"
+            /><img
+              alt="3.jpg"
+              class="photo"
+              data-template-id="gallery-3"
+              loading="lazy"
+              src="assets/images/3-jpg.jpg"
+            /><img
+              alt="WhatsApp Image 2026-08-16 at 22.57.07.jpg"
+              class="photo"
+              data-template-id="gallery-4"
+              loading="lazy"
+              src="assets/images/whatsapp-image-2026-08-16-at-22-57-07-jpg.jpg"
+            /><img
+              alt="image.jpg"
+              class="photo"
+              data-template-id="gallery-5"
+              loading="lazy"
+              src="assets/images/image-jpg.jpg"
+            /><img
+              alt="WhatsApp Image 2026-08-27 at 00.42.54.jpg"
+              class="photo"
+              data-template-id="gallery-6"
+              loading="lazy"
+              src="assets/images/whatsapp-image-2026-08-27-at-00-42-54-jpg.jpg"
+            /><img
+              alt="CD9BC0B2-6CFF-4DD9-BF81-309E13F50A38.jpg"
+              class="photo"
+              data-template-id="gallery-7"
+              loading="lazy"
+              src="assets/images/cd9bc0b2-6cff-4dd9-bf81-309e13f50a38-jpg.jpg"
+            /><img
+              alt="223.jpg"
+              class="photo"
+              data-template-id="gallery-8"
+              loading="lazy"
+              src="assets/images/223-jpg.jpg"
+            /><img
+              alt="IMG_8232.HEIC"
+              class="photo"
+              data-template-id="gallery-9"
+              loading="lazy"
+              src="assets/images/img-8232-heic.jpg"
+            /><img
+              alt="IMG_6833.HEIC"
+              class="photo"
+              data-template-id="gallery-10"
+              loading="lazy"
+              src="assets/images/img-6833-heic.jpg"
+            />
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="closing-title" class="closing">
+        <img
+          alt="Large group posing outdoors in front of traditional houses."
+          data-template-id="closing-image"
+          loading="lazy"
+          src="https://images.pexels.com/photos/35425966/pexels-photo-35425966.jpeg"
+        />
+        <div>
+          <p
+            class="text-xs font-bold tracking-[.24em] uppercase"
+            data-template-id="closing-kicker"
+            style="
+              color: rgb(217, 243, 255);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 16px;
+            "
+          >
+            Sampai Jumpa
+          </p>
+          <h2
+            class="mt-5 text-5xl font-bold tracking-tight md:text-7xl"
+            data-template-id="closing-title"
+            id="closing-title"
+            style="
+              color: rgb(255, 255, 255);
+              font-weight: 700;
+              font-style: normal;
+              font-size: 24px;
+            "
+          >
+            Terima Kasih, Desa Wonosari.
+          </h2>
+          <p
+            class="mx-auto mt-6 max-w-lg leading-7 text-white/85"
+            data-template-id="closing-text"
+            style="
+              color: rgb(255, 255, 255);
+              font-weight: 400;
+              font-style: normal;
+              font-size: 16px;
+            "
+          >
+            Untuk setiap senyum, ruang belajar, cerita sore, dan kehangatan yang
+            kami bawa pulang. Wonosari akan selalu menjadi bagian dari
+            perjalanan kami.
+          </p>
+          <footer class="mt-12 border-t border-white/25 pt-7">
+            <div class="flex justify-center gap-3">
+              <img
+                alt="Editable university footer logo placeholder"
+                class="logo"
+                data-template-id="footer-logo-1"
+                loading="lazy"
+                src="https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
+              /><img
+                alt="Editable community service footer logo placeholder"
+                class="logo"
+                data-template-id="footer-logo-2"
+                loading="lazy"
+                src="https://images.pexels.com/photos/5398874/pexels-photo-5398874.jpeg"
+              />
+            </div>
+            <div class="social mt-6">
+              <button
+                aria-label="Instagram"
+                data-template-id="social-instagram"
+                style="background: transparent; color: rgb(255, 255, 255)"
+              >
+                <i data-lucide="instagram" width="18"></i></button
+              ><button
+                aria-label="TikTok"
+                data-template-id="social-tiktok"
+                style="background: transparent; color: rgb(255, 255, 255)"
+              >
+                <i data-lucide="music-2" width="18"></i></button
+              ><button
+                aria-label="Email"
+                data-template-id="social-mail"
+                style="background: transparent; color: rgb(255, 255, 255)"
+              >
+                <i data-lucide="mail" width="18"></i>
+              </button>
+            </div>
+            <p
+              class="mt-5 text-xs text-white/70"
+              data-template-id="footer-text"
+              style="
+                color: rgb(255, 255, 255);
+                font-weight: 400;
+                font-style: normal;
+                font-size: 16px;
+              "
+            >
+              KKN Universitas Abdurrab · Desa Wonosari · Pulau Bengkalis
+            </p>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      document
+        .getElementById("explore-button")
+        .addEventListener("click", () =>
+          document
+            .getElementById("home")
+            .scrollIntoView({ behavior: "smooth" }),
+        );
+      const socialLinks = {
+        "social-instagram": "https://www.instagram.com/kkn.desawonosari__/",
+        "social-tiktok": "https://www.tiktok.com/@kukertawonosari2026",
+        "social-mail": "mailto:kkndesawonosaribengkalis@gmail.com",
+      };
+      Object.entries(socialLinks).forEach(([id, url]) =>
+        document
+          .querySelector(`[data-template-id="${id}"]`)
+          ?.addEventListener("click", () =>
+            window.open(url, "_blank", "noopener,noreferrer"),
+          ),
+      );
+      document.querySelectorAll(".video-cover").forEach((button) =>
+        button.addEventListener("click", () => {
+          window.open(button.dataset.videoUrl, "_blank", "noopener,noreferrer");
+        }),
+      );
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          }),
+        { threshold: 0.12 },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+      lucide.createIcons();
+    </script>
+    <script>
+      document.querySelectorAll('img[src^="assets/images/"]').forEach((img) =>
+        img.addEventListener(
+          "error",
+          () => {
+            img.src = "assets/images/placeholder.svg";
+          },
+          { once: true },
+        ),
+      );
+    </script>
+  </body>
+</html>
